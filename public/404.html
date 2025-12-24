@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/kolla_versuch2/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Kolla - Task Management</title>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script>
+      // GitHub Pages SPA fix: Load the Vue app assets dynamically
+      // This allows reloading any page without redirecting
+      (function() {
+        const basePath = '/kolla_versuch2';
+        
+        // Fetch index.html to get the asset references
+        fetch(basePath + '/index.html')
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            
+            // Get all script and link tags from index.html
+            const scripts = doc.querySelectorAll('script[type="module"]');
+            const styles = doc.querySelectorAll('link[rel="stylesheet"]');
+            
+            // Add stylesheets
+            styles.forEach(link => {
+              const newLink = document.createElement('link');
+              newLink.rel = 'stylesheet';
+              newLink.href = link.href;
+              if (link.crossOrigin) newLink.crossOrigin = link.crossOrigin;
+              document.head.appendChild(newLink);
+            });
+            
+            // Add scripts
+            scripts.forEach(script => {
+              const newScript = document.createElement('script');
+              newScript.type = 'module';
+              newScript.src = script.src;
+              if (script.crossOrigin) newScript.crossOrigin = script.crossOrigin;
+              document.body.appendChild(newScript);
+            });
+          })
+          .catch(err => {
+            console.error('Failed to load app assets:', err);
+            // Fallback: simple redirect
+            const path = window.location.pathname;
+            const search = window.location.search;
+            const hash = window.location.hash;
+            let cleanPath = path.startsWith(basePath) 
+              ? path.substring(basePath.length) 
+              : path;
+            if (!cleanPath.startsWith('/')) cleanPath = '/' + cleanPath;
+            window.location.replace(basePath + '/index.html' + cleanPath + search + hash);
+          });
+      })();
+    </script>
+  </body>
+</html>
+

@@ -1,0 +1,59 @@
+@import './responsive.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-sans antialiased;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Optimize rendering */
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  #app {
+    min-height: 100vh;
+    /* Smooth scrolling */
+    scroll-behavior: smooth;
+  }
+
+  /* Touch-friendly on mobile */
+  @media (max-width: 767px) {
+    button, a, input, select, textarea {
+      touch-action: manipulation;
+    }
+  }
+}
+
+@layer utilities {
+  .bg-gradient-primary {
+    background: linear-gradient(to bottom, #025240 0%, #49C4A6 100%);
+  }
+  
+  .text-gradient-primary {
+    background: linear-gradient(to bottom, #025240 0%, #49C4A6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .transition-smooth {
+    transition-duration: 250ms;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Additional gradient utilities using Tailwind classes */
+  .from-primary-start {
+    --tw-gradient-from: #025240;
+    --tw-gradient-to: #49C4A6;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+  }
+  
+  .to-primary-end {
+    --tw-gradient-to: #49C4A6;
+  }
+}

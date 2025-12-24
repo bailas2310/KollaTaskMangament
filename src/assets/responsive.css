@@ -1,0 +1,71 @@
+/* Responsive Design Utilities */
+
+/* Touch-friendly targets (minimum 44x44px) */
+.touch-target {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Mobile-first breakpoints */
+@media (max-width: 319px) {
+  /* Extra small devices */
+  .container-responsive {
+    padding: 0.5rem;
+  }
+}
+
+@media (min-width: 320px) {
+  /* Small phones */
+  .container-responsive {
+    padding: 0.75rem;
+  }
+}
+
+@media (min-width: 768px) {
+  /* Tablets */
+  .container-responsive {
+    padding: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Desktops */
+  .container-responsive {
+    padding: 1.5rem;
+  }
+}
+
+@media (min-width: 1440px) {
+  /* Large desktops */
+  .container-responsive {
+    padding: 2rem;
+  }
+}
+
+/* Smooth scrolling for mobile */
+@media (max-width: 767px) {
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Prevent text selection on buttons (mobile) */
+@media (max-width: 767px) {
+  button, .btn {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    user-select: none;
+  }
+}
+
+/* Optimize animations for performance */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
