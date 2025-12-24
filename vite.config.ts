@@ -17,5 +17,5 @@ export default defineConfig({
   },
   // GitHub Pages: use repository name as base path
   // For custom domain, change to '/'
-  base: process.env.GITHUB_PAGES === 'true' ? '/kolla_versuch2/' : '/',
+  base: process.env.GITHUB_PAGES === 'true' ? '/KollaTaskMangament/' : '/',
 })
