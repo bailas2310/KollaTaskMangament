@@ -5,7 +5,7 @@
         <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
           <div>
             <div class="flex items-center gap-2">
-              <h1 class="text-2xl font-bold text-neutral-900">Actor Dashboard</h1>
+              <h1 class="text-2xl font-bold text-neutral-900">User Dashboard</h1>
               <span
                 v-if="isRefreshing"
                 class="relative flex h-3 w-3"
@@ -261,7 +261,7 @@ const dueTodayCount = computed(() => {
   const now = new Date()
   const tomorrow = new Date(now)
   tomorrow.setDate(tomorrow.getDate() + 1)
-  
+
   return taskStore.tasks.filter(task => {
     const deadline = new Date(task.deadline)
     return deadline >= now && deadline < tomorrow && task.status !== 'completed'
@@ -341,7 +341,7 @@ async function handlePriorityChange(taskId: string, priority: TaskPriority) {
 function handleNotificationClick(notification: AppNotification) {
   notificationStore.markAsRead(notification.id)
   showNotifications.value = false
-  
+
   // If notification has a taskId, open the task detail
   if (notification.taskId) {
     const task = taskStore.tasks.find(t => t.id === notification.taskId)
@@ -368,7 +368,7 @@ function formatDate(date: Date | string): string {
   if (diffMins < 60) return `${diffMins}m ago`
   if (diffHours < 24) return `${diffHours}h ago`
   if (diffDays < 7) return `${diffDays}d ago`
-  
+
   return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: d.getFullYear() !== now.getFullYear() ? 'numeric' : undefined })
 }
 

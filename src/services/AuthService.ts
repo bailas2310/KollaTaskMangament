@@ -12,11 +12,11 @@ export class AuthService {
     }
   }
 
-  async login(email: string, password: string, role: 'worker' | 'manager'): Promise<User | null> {
+  async login(email: string, password: string): Promise<User | null> {
     if (API_CONFIG.useMock) {
       // Mock mode: use repository and validate password
       const user = await this.userRepository.findByEmail(email)
-      if (user && user.role === role) {
+      if (user) {
         // For demo users, accept "password123" or any password for newly registered users
         // In a real app, passwords would be hashed and compared
         const isValidPassword = password === 'password123' || password.length >= 6
@@ -28,7 +28,7 @@ export class AuthService {
     } else {
       // Real API mode: use API service
       try {
-        const response = await this.authApiService!.login(email, password, role)
+        const response = await this.authApiService!.login(email, password)
         return response.user
       } catch (error) {
         console.error('Login failed:', error)

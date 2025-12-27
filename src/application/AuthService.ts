@@ -4,14 +4,19 @@ import type { UserRepository } from '../infrastructure/UserRepository'
 export class AuthService {
   constructor(private userRepository: UserRepository) {}
 
-  async login(email: string, role: 'worker' | 'manager'): Promise<User | null> {
+  async login(email: string, password: string): Promise<User | null> {
     // For prototype, we'll use mock users
     const user = await this.userRepository.findByEmail(email)
-    
-    if (user && user.role === role) {
-      return user
+
+    if (user) {
+      // For demo users, accept "password123" or any password for newly registered users
+      // In a real app, passwords would be hashed and compared
+      const isValidPassword = password === 'password123' || password.length >= 6
+      if (isValidPassword) {
+        return user
+      }
     }
-    
+
     return null
   }
 

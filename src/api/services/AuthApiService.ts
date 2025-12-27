@@ -7,10 +7,10 @@ import type { User } from '../../models/User'
  * Handles authentication API calls
  */
 export class AuthApiService {
-  async login(email: string, password: string, role: 'worker' | 'manager'): Promise<{ user: User; token: string }> {
+  async login(email: string, password: string): Promise<{ user: User; token: string }> {
     const response = await apiClient.post<{ user: User; token: string }>(
       API_CONFIG.endpoints.auth.login,
-      { email, password, role }
+      { email, password }
     )
     
     // Store token

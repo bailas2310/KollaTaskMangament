@@ -109,7 +109,8 @@
               >
                 Create User
               </button>
-              <button
+              <!-- Settings button commented out -->
+              <!-- <button
                 @click="showAdminSettings = true"
                 class="px-4 py-2 text-sm text-neutral-700 border border-neutral-100 rounded-button hover:bg-neutral-50 transition-smooth font-medium"
                 title="Admin Settings"
@@ -118,7 +119,7 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
-              </button>
+              </button> -->
             </div>
             <button
               @click="handleLogout"
@@ -269,10 +270,11 @@
         @close="showUserModal = false"
         @created="handleUserCreated"
       />
-      <AdminSettingsModal
+      <!-- AdminSettingsModal commented out -->
+      <!-- <AdminSettingsModal
         :visible="showAdminSettings"
         @close="showAdminSettings = false"
-      />
+      /> -->
       <TaskForwardModal
         :task="forwardingTask"
         :visible="showForwardModal"
@@ -292,14 +294,14 @@ import { useNotificationStore } from '../store/notifications'
 import { useActivityStore } from '../store/activity'
 import { useUserStore } from '../store/users'
 import type { TaskStatus, TaskPriority } from '../models/Task'
-import { useAdminSettingsStore } from '../store/adminSettings'
+// import { useAdminSettingsStore } from '../store/adminSettings'
 import type { Notification } from '../models/Notification'
 import TaskTable from '../components/TaskTable.vue'
 import TaskProgressChart from '../components/charts/TaskProgressChart.vue'
 import PriorityDistributionChart from '../components/charts/PriorityDistributionChart.vue'
 import TaskEditModal from '../components/TaskEditModal.vue'
 import TaskForwardModal from '../components/TaskForwardModal.vue'
-import AdminSettingsModal from '../components/AdminSettingsModal.vue'
+// import AdminSettingsModal from '../components/AdminSettingsModal.vue'
 import TaskDetailModal from '../components/TaskDetailModal.vue'
 import TaskCreateEditModal from '../components/TaskCreateEditModal.vue'
 import UserCreateModal from '../components/UserCreateModal.vue'
@@ -318,7 +320,7 @@ const showDetailModal = ref(false)
 const showCreateModal = ref(false)
 const showEditModal = ref(false)
 const showUserModal = ref(false)
-const showAdminSettings = ref(false)
+// const showAdminSettings = ref(false)
 const showUserEditModal = ref(false)
 const showForwardModal = ref(false)
 const selectedTaskId = ref<string | null>(null)

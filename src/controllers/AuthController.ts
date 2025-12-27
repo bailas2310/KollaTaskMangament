@@ -9,8 +9,8 @@ export class AuthController {
     this.authService = getAuthService()
   }
 
-  async login(email: string, password: string, role: 'worker' | 'manager'): Promise<User | null> {
-    return this.authService.login(email, password, role)
+  async login(email: string, password: string): Promise<User | null> {
+    return this.authService.login(email, password)
   }
 
   async register(

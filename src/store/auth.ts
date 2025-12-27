@@ -11,11 +11,11 @@ export const useAuthStore = defineStore('auth', () => {
   const isManager = computed(() => user.value?.role === 'manager')
   const isWorker = computed(() => user.value?.role === 'worker')
 
-  async function login(email: string, password: string, role: 'worker' | 'manager') {
+  async function login(email: string, password: string) {
     loading.value = true
     try {
       const authService = getAuthService()
-      const loggedInUser = await authService.login(email, password, role)
+      const loggedInUser = await authService.login(email, password)
       if (loggedInUser) {
         user.value = loggedInUser
         localStorage.setItem('kolla_user', JSON.stringify(loggedInUser))
